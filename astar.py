@@ -55,7 +55,7 @@ def a_star(m:maze,b:agent|None=None):
 
                 count_nos_abertos = count_nos_abertos + 1
 
-                temp_g = g_score[current] + 1
+                temp_g = g_score[current] + 1 # Como estamos comparando labirintos sempre vai ser 1 
 
                 if temp_g < g_score[child]:
 
@@ -73,5 +73,6 @@ def a_star(m:maze,b:agent|None=None):
         cell = came_from[cell]
     
     end_time = time.time()
+    print(count_nos_abertos, len(path), end_time-start_time)
 
-    return path, count_nos_abertos, end_time-start_time
+    return path
