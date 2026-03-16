@@ -35,7 +35,6 @@ def a_star(m:maze,b:agent|None=None):
         if b:
             b.position = current
             m._win.update()
-            time.sleep(0.001)
 
         if current == goal:
             break
@@ -44,10 +43,10 @@ def a_star(m:maze,b:agent|None=None):
 
             if m.maze_map[current][direction] == True:
 
-                if direction == "E":
-                    child = (current[0], current[1] + 1)
-                elif direction == "W":
+                if direction == "W":
                     child = (current[0], current[1] - 1)
+                elif direction == "E":
+                    child = (current[0], current[1] + 1)
                 elif direction == "N":
                     child = (current[0] - 1, current[1])
                 elif direction == "S":
@@ -55,6 +54,8 @@ def a_star(m:maze,b:agent|None=None):
 
                 count_nos_abertos = count_nos_abertos + 1
 
+
+                # A STAR
                 temp_g = g_score[current] + 1 # Como estamos comparando labirintos sempre vai ser 1 
 
                 if temp_g < g_score[child]:
@@ -73,6 +74,5 @@ def a_star(m:maze,b:agent|None=None):
         cell = came_from[cell]
     
     end_time = time.time()
-    print(count_nos_abertos, len(path), end_time-start_time)
 
-    return path
+    return path, count_nos_abertos, end_time-start_time

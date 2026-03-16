@@ -22,7 +22,6 @@ def bfs(m:maze,a:agent|None=None):
         if a:
             a.position = current
             m._win.update()
-            time.sleep(0.001)
 
         if current == destino:
             break
@@ -30,10 +29,10 @@ def bfs(m:maze,a:agent|None=None):
         for direction in "ESNW":
            
             if m.maze_map[current][direction] == True:
-                if direction == "E":
-                    novo_no = (current[0], current[1] + 1)
-                elif direction == "W":
+                if direction == "W":
                     novo_no = (current[0], current[1] - 1)
+                elif direction == "E":
+                    novo_no = (current[0], current[1] + 1)
                 elif direction == "N":
                     novo_no = (current[0] - 1, current[1])
                 elif direction == "S":
